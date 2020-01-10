@@ -1,8 +1,6 @@
-import React, { useState, ChangeEvent } from "react";
 import { observer } from "mobx-react-lite";
-
+import React, { ChangeEvent, useState } from "react";
 import { useMst } from "../models/Root";
-
 import Button from "./Button";
 
 interface Props {}
@@ -19,11 +17,11 @@ const Cart: React.FC<Props> = observer(() => {
 
   return (
     <div className="w-64 mx-auto mt-16">
-      <p className="font-bold text-2xl text-center">Item Cart</p>
+      <p className="text-2xl font-bold text-center">Item Cart</p>
       <label className="block">
         <span className="text-gray-200">Name</span>
         <input
-          className="form-input mt-1 block w-full"
+          className="block w-full mt-1 form-input"
           value={name}
           onChange={(e: ChangeEvent<HTMLInputElement>) => {
             if (e && e.target) {
@@ -35,7 +33,7 @@ const Cart: React.FC<Props> = observer(() => {
       <label className="block mt-2">
         <span className="text-gray-200">Price</span>
         <input
-          className="form-input mt-1 block w-full"
+          className="block w-full mt-1 form-input"
           type="number"
           min="0.0"
           step="any"
@@ -47,16 +45,16 @@ const Cart: React.FC<Props> = observer(() => {
           }}
         />
       </label>
-      <div className="mt-4 flex items-center">
+      <div className="flex items-center mt-4">
         <p
           style={{ fontVariant: "tabular-nums" }}
-          className="leading-tight font-bold text-lg"
+          className="text-lg font-bold leading-tight"
         >
           Items: {cart.totalItems}
         </p>
         <p
           style={{ fontVariant: "tabular-nums" }}
-          className="ml-4 flex-grow leading-tight font-bold text-lg"
+          className="flex-grow ml-4 text-lg font-bold leading-tight"
         >
           Total: {cart.totalPrice}
         </p>
@@ -72,7 +70,7 @@ const Cart: React.FC<Props> = observer(() => {
           }}
         />
       </div>
-      <div className="my-12 h-64 bg-gray-800 rounded overflow-y-scroll">
+      <div className="h-64 my-12 overflow-y-scroll bg-gray-800 rounded">
         {cart.items.map((item, index) => {
           return (
             <div

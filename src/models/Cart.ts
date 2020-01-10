@@ -1,9 +1,9 @@
 import {
-  types,
+  destroy,
+  getParent,
   Instance,
   SnapshotIn,
-  getParent,
-  destroy
+  types
 } from "mobx-state-tree";
 
 export const Tag = types.model({
