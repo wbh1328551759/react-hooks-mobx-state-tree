@@ -1,8 +1,8 @@
-import { useContext, createContext } from "react";
-import { types, Instance, onSnapshot } from "mobx-state-tree";
-
-import { Counter } from "./Counter";
+import { Instance, onSnapshot, types } from "mobx-state-tree";
+import { connectReduxDevtools } from "mst-middlewares";
+import { createContext, useContext } from "react";
 import { Cart } from "./Cart";
+import { Counter } from "./Counter";
 
 const RootModel = types.model({
   counter: Counter,
@@ -15,6 +15,8 @@ export const rootStore = RootModel.create({
   },
   cart: { items: [] }
 });
+
+connectReduxDevtools(require("remotedev"), rootStore);
 
 onSnapshot(rootStore, snapshot => console.log("Snapshot: ", snapshot));
 
